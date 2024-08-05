@@ -45,7 +45,8 @@ public class ProductController {
             }
             return new ResponseEntity<>(from(product),headers, HttpStatus.OK);
         }catch (IllegalArgumentException e){
-            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+//            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+            throw e;
         }
 
     }
