@@ -53,11 +53,9 @@ public class ProductController {
 
     @PostMapping
     public ProductDto createProduct(@RequestBody ProductDto productDto){
-        Product product = new Product();
-        product.setName(productDto.getName());
-        product.setDescription(productDto.getDescription());
-        product.setPrice(productDto.getPrice());
-        return productDto;
+        Product product = from(productDto);
+        Product response = productService.createProduct(product);
+        return from(response);
     }
     @PutMapping("{id}")
     public ProductDto replaceProduct(@PathVariable("id") Long productId, @RequestBody ProductDto productDto){
@@ -72,6 +70,7 @@ public class ProductController {
         product.setPrice(productDto.getPrice());
         product.setImageUrl(productDto.getImageUrl());
         product.setDescription(productDto.getDescription());
+        product.setId(productDto.getId());
         if(productDto.getCategory() !=null) {
             Category category = new Category();
             category.setName(productDto.getCategory().getName());
@@ -83,6 +82,7 @@ public class ProductController {
 
     private ProductDto from(Product product){
         ProductDto productDto = new ProductDto();
+        productDto.setId(product.getId());
         productDto.setName(product.getName());
         productDto.setDescription(product.getDescription());
         productDto.setPrice(product.getPrice());
