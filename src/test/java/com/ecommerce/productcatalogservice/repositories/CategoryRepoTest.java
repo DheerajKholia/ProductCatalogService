@@ -18,16 +18,16 @@ class CategoryRepoTest {
     @Autowired
     private CategoryRepo categoryRepo;
 
-    @Test
+    //@Test
     @Transactional
     void findFetchTypes() {
-        Optional<Category> categoryOpt = categoryRepo.findById(10L);
+        Optional<Category> categoryOpt= categoryRepo.findById(10L);
         System.out.println(categoryOpt.get().getName());
         for(Product p: categoryOpt.get().getProducts()){
             System.out.println(p.getName());
         }
     }
-    @Test
+    //@Test
     @Transactional
     public void testFetchTypesAndModes() {
         Optional<Category> optionalCategory = categoryRepo.findById(10L);

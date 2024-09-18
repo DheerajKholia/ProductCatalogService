@@ -20,5 +20,5 @@ public class Product extends BaseModel{
     @ManyToOne(cascade = CascadeType.ALL)
     private Category category;
 
-    private boolean isPrimeSpecific;
+//    private boolean isPrimeSpecific;
 }
