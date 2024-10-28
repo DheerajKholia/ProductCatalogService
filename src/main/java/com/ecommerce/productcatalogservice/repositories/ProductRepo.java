@@ -11,6 +11,7 @@ import java.util.Optional;
 @Repository
 public interface ProductRepo extends JpaRepository<Product,Long> {
 
+    List<Product> findProductsByName(String query);
     Optional<Product> findById(Long id);
     List<Product> findProductsByPriceBetween(Double lower, Double higher);
     List<Product> findAllByIsPrimeSpecific(Boolean isPrime);
